@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function App() {
   const [greeting, setGreeting] = useState('Before');
+  console.log({apiUrl})
 
   useEffect(() => {
-    fetch('/api/greet')
+    fetch(`${apiUrl}/api/greet`)
       .then(response => response.json())
       .then(data => setGreeting(data.message))
       .catch(error => console.error('Error fetching greeting:', error));
