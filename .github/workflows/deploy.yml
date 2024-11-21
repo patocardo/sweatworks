@@ -32,7 +32,7 @@ jobs:
         npm run build
 
     - name: Upload build to S3 bucket
-      uses: jakejarvis/s3-sync-action
+      uses: jakejarvis/s3-sync-action@master
       with:
         args: --acl public-read
       env:
