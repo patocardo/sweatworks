@@ -1,19 +1,19 @@
-name: Deploy Sweatworks
+name: Deploy Sweatworks Production
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - "v*.*.*"  # Deploy only when a version tag is pushed (e.g., v1.0.0)
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     env:
-      S3_BUCKET_NAME: sweatworks-client
-      AWS_REGION: us-east-1
+      S3_BUCKET_NAME: sweatworks-prod
+      AWS_REGION: us-east-2
       EC2_USER: ec2-user
-      EC2_IP: 3.14.150.93
+      EC2_IP: 18.117.173.214
       PEM_FILE_NAME: patocardo.pem
 
     steps:
@@ -32,7 +32,7 @@ jobs:
         npm run build
 
     - name: Upload build to S3 bucket
-      uses: jakejarvis/s3-sync-action@master
+      uses: jakejarvis/s3-sync-action@main
       with:
         args: --acl public-read
       env:
