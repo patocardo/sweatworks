@@ -27,3 +27,8 @@ variable "public_key_path" {
   description = "Path to the public SSH key"
   type        = string
 }
+
+variable "images_bucket_name" {
+  description = "Name of the bucket for storing original and processed images"
+  type        = string
+}
