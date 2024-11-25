@@ -6,8 +6,10 @@ const app = express();
 
 app.use(cors());
 
-// Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'client/build')));
+const imageRoutes = require('./imagesRoutes');
+const { upload } = require('./imageSchema');
+
+app.use('/images', upload.single('image'), imageRoutes);
 
 // API endpoint example
 app.get('/api/greet', (req, res) => {
