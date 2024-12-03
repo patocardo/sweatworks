@@ -38,7 +38,7 @@ function ImageGallery() {
 
   const handleDelete = async (key) => {
     try {
-      await axios.delete(`/image-handler/delete/${key}`);
+      await axios.delete(`/image-handler/${key}`);
       fetchImages(); // Refresh images after deletion
     } catch (error) {
       console.error('Error deleting image', error);
