@@ -1,10 +1,11 @@
-const { resize, save } = require('./imageController');
+const { resize, save, local } = require('./imageController');
 
-// Controller to handle image upload and resizing
+const isDevEnv = process.env.NODE_ENV === 'development';
+
 const uploadAndResizeImage = async (req, res) => {
   try {
     const resized = await resize(req.file);
-    const saved = await save(resized);
+    const saved = isDevEnv ? await save(resized) : await local.save(resized);
     res.status(200).json({ message: 'Image processed successfully', saved });
   } catch (error) {
     res.status(500).json({ message: 'Failed to process image', error: error.message });

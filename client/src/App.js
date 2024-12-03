@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import ImageGallery from './gallery/ImageGallery';
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -19,6 +20,7 @@ function App() {
       <header className="App-header">
         <h1>{greeting}</h1>
       </header>
+      <ImageGallery />
     </div>
   );
 }

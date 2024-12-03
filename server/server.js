@@ -6,8 +6,8 @@ const app = express();
 
 app.use(cors());
 
-const imageRoutes = require('./imagesRoutes');
-const { upload } = require('./imageSchema');
+const imageRoutes = require('./image-handler/imageRoutes');
+const { upload } = require('./image-handler/imageSchema');
 
 app.use('/images', upload.single('image'), imageRoutes);
 
